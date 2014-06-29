@@ -23,7 +23,7 @@ Terminal-chat?
 3. dag
 ======
 
-npm som kilde til frontend-kode
+npm som kilde til frontend-kode. Browserify.
 
 web-chat?
 
