@@ -13,6 +13,8 @@ async-kode. single threaded
 
 nodemon?
 
+Noe om streams?
+
 http://nodeschool.io/?
 
 
