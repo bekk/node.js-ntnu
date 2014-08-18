@@ -1,5 +1,5 @@
-1. dag
-======
+1. dag - Kim
+============
 
 Introdusere komponentene. Node.js, npm.
 
@@ -11,17 +11,24 @@ npm
 
 async-kode. single threaded
 
-2. dag
-======
+nodemon?
+
+http://nodeschool.io/?
+
+
+2. dag - Mikael
+===============
 
 Server-opplegg. io. Sockets. websockets. Streaming.
 
 Trenger ikke være web.
 
-Terminal-chat?
+Terminal-chat. Http, tcp, fs, pipe, multiplex
 
-3. dag
-======
+Lær mer: Stream-adventures
+
+3. dag - Stian
+==============
 
 npm som kilde til frontend-kode. Browserify.
 
@@ -32,3 +39,9 @@ webgl?
 tema som folk kan noe om og kan løse oppgaver til
 
 koble til større kontekst --> frontend
+
+Abstrahere DOM? require('bekk-chat')? setName(), setTitle(), ... Gjør det idiotsikkert
+
+Sette opp Heroku, koble på slik at alle kan prate sammen
+
+Lær mer: Browserify-adventurs
