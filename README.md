@@ -1,4 +1,4 @@
-1. dag - Kim
+1. okt - Kim
 ============
 
 Introdusere komponentene. Node.js, npm.
@@ -16,8 +16,8 @@ nodemon?
 http://nodeschool.io/?
 
 
-2. dag - Mikael
-===============
+22. okt - Mikael
+================
 
 Server-opplegg. io. Sockets. websockets. Streaming.
 
@@ -27,7 +27,7 @@ Terminal-chat. Http, tcp, fs, pipe, multiplex
 
 Lær mer: Stream-adventures
 
-3. dag - Stian
+5. nov - Stian
 ==============
 
 npm som kilde til frontend-kode. Browserify.
