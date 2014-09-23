@@ -27,10 +27,10 @@
     3. Promises (denodify?)
 4. Avansert
   1. EventEmitter
-  2. Kort intro om Streams
+  2. Kort intro om Streams?
 5. Workshop:
   1. [LearnYouNode](https://github.com/rvagg/learnyounode)
-  2. [Stream adventure](https://github.com/substack/stream-adventure) (om mye tid)
+  2. [Async You](https://github.com/bulkan/async-you) (om mye tid)
 
 22. okt - Kim
 ================
