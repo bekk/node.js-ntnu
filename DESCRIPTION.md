@@ -21,7 +21,7 @@ Node.js fra andre plattformer og hvorfor det er blitt så populært
 som det har blitt. Vi Går igjennom npm, asynkron kode, EventEmitter
 og kort om streams.
 
-Anbefalt å installere før oppmøte: [Node.js](http://nodejs.org/),
+Anbefalt å installere før oppmøte: [Nyeste Node.js](http://nodejs.org/),
 [LearnYouNode](https://github.com/rvagg/learnyounode)
 og [Async You](https://github.com/bulkan/async-you).
 
