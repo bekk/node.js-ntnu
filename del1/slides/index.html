@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Bli en MacGyver med Node.js</title>
+    <title>Node.js: Del I</</title>
 
     <meta name="description" content="Foredrag om bruk av streams i javascript">
     <meta name="author" content="Mikael Brevik">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/presentation.css" id="theme">
 
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/monokai-sublime.css">
+    <link rel="stylesheet" href="lib/css/railscast.css">
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
@@ -37,54 +37,32 @@
     <div class="reveal">
       <div class="slides">
 
-        <section data-background="./img/explosion.gif">
+        <section>
+          <h1>Node.js: Del I</h1>
+          <h2>– A New Hope</h2>
         </section>
 
-        <section class="about-me" data-background="./img/starring.jpg">
-          <div class="about-description">
-            <h1>Mikael Brevik</h1>
-            <p>github<a href="https://github.com/mikaelbr">@mikaelbr</a> – twitter<a href="http://twitter.com/mikaelbrevik">@mikaelbrevik</a></p>
-          </div>
+        <section data-background="./img/nodejs.png"></section>
 
-          <aside class="notes">
-            <ul>
-              <li>Konsulent hos BEKK</li>
-              <li>Bachelor fra HIST (2011), Master fra NTNU (2013).</li>
-            </ul>
+        <section data-background="./img/ryan_dahl.png"></section>
 
-          </aside>
-        </section>
+        <section data-background="./img/Chrome-V81.jpg"></section>
+
+        <section data-background="./img/cpp.png"></section>
+
+        <section data-background="./img/nodejs.png"></section>
 
         <section data-background="#0a3c59">
-          <h1>
-            <span class="fragment highlight-current-blue">Kjapt om Node.js</span>
-            <span class="fragment highlight-current-blue">Økosystemet til Node.js</span>
-            <span class="fragment highlight-current-blue">Node.js som tooling</span>
-            <span class="fragment highlight-current-blue">Kodeeksempler</span>
-          </h1>
+          <h1>Hva oppnår vi?</h1>
+          <h2 class="fragment">JavaScript som serverside språk!</h2>
 
           <aside class="notes">
-            <p>Vi vil bare gå kjapt innom hvordan Node.js fungerer og hva det er for noe for å ha et grunnlag.</p>
-            <p>En veldig positiv ting med Node.js, som vi vil se mer på, er at det er veldig mange eksisterende pakker som kan brukes.</p>
-            <p>Hele hensikten med dette foredraget er å kunne vise hvor enkelt man kan programmere ting med bruk av Node.js, men det kunne like gjerne ha vært andre plattformer – så lenge man syns det er gøy.</p>
-            <p>Med å ha det gøy med programmering lærer man mer. Å lage små verktøy er da perfekt da det tar kort tid og man trenger ikke å jobbe flere dager.</p>
-            <p>Helt til slutt skal vi gå igjennom noen kjappe kodesnutter jeg skrev til dette foredraget som er potensielt helt meningsløse.</p>
-          </aside>
-
-        </section>
-
-        <section data-background="#a3354c">
-          <h1>Node.js: Googles V8 + API</h1>
-
-          <aside class="notes">
-            <p>Først lansert i 2009 av Ryan Dahl, som på den tiden, såvidt jeg husker, jobbet for Joyent.</p>
-            <p>Googles V8 Javascript-engine med et ekstra API som tillater oss å bruke Javascript som et serversidespråk. En JS-engine er den som tolker og kjører selve javascriptet.</p>
-            <p>I nettleseren har du ting som setTimeout, setInterval osv, men det er ikke i javascript-motoren seg selv - men implementert i nettleseren.</p>
-            <p>Node.js har derfor et C++ lag på toppen av V8 for å ha med disse funksjonene.</p>
           </aside>
         </section>
 
-        <section data-background="#a3354c">
+        <section data-background="./img/JavaScript-logo.png"  data-background-size="400px" data-background-repeat="repeat"></section>
+
+        <section data-background="#0a3c59">
           <h1>Ikke-blokkerende (asynkront) miljø, uten trådhåndtering</h1>
 
           <aside class="notes">
@@ -97,7 +75,7 @@
           </aside>
         </section>
 
-        <section data-background="#a3354c">
+        <section data-background="#0a3c59">
           <h1>Ikke for CPU-intensitive oppgaver</h1>
           <aside class="notes">
             <p>Det som gjør det kjapt for I/O, gjør det ikke så godt egnet til tunge CPU operasjoner</p>
@@ -105,203 +83,327 @@
           </aside>
         </section>
 
-        <section data-background="#a3354c">
+        <section data-background="#0a3c59">
           <h1>Kan bruke erfaringer fra nettleseren</h1>
 
           <aside class="notes">
             <p>Ettersom det er Javascript kan man bruke språkerfaringer man har fra nettleseren. I enkelte tilfeller kan man også dele kode mellom tjener og klient.</p>
             <p>Eksempler på det man kan dele er domenelogikk, validering, modeller eller ligende.</p>
           </aside>
-        </section data-background="#a3354c">
+        </section>
+
+        <section data-background="#0a3c59">
+<pre><code data-trim class="javascript">
+console.log(isAnagram('Elvis', 'Lives'));
+//=> true
+
+function sortedString (str) {
+  return str.toLowerCase().split('').sort().join('');
+}
+function isAnagram (a, b) {
+  return sortedString(a) === sortedString(b);
+}
+</code></pre>
+        </section>
+
+        <section data-background="#0a3c59">
+<pre><code data-trim class="javascript">
+// Using:
+console.log(isAnagram('Elvis', 'Lives'));
+
+// Private:
+function sortedString (str) {
+  return str.toLowerCase().split('').sort().join('');
+}
+
+// Public:
+function isAnagram (a, b) {
+  return sortedString(a) === sortedString(b);
+}
+</code></pre>
+        </section>
+
+        <section data-background="#0a3c59">
+<pre><code data-trim class="javascript">
+// index.js (Using)
+var isAnagram = require('./isAnagram');
+console.log(isAnagram('Elvis', 'Lives'));
+</code></pre>
+
+<pre class="fragment"><code data-trim class="javascript">
+// isAnagram.js (module)
+
+// Expose publics
+module.exports = function isAnagram (a, b) {
+  return sortedString(a) === sortedString(b);
+}
+// Private
+function sortedString (str) {
+  return str.toLowerCase().split('').sort().join('');
+}
+</code></pre>
+        </section>
+
+        <section data-background="#0a3c59">
+<pre><code data-trim class="javascript">
+// stringywingy.js (module)
+
+// Expose more functions
+module.exports.isAnagram = function (a, b) { /* ... */ }
+module.exports.isPalindrome = function (text) { /* ... */ }
+</code></pre>
+
+<pre class="fragment"><code data-trim class="javascript">
+// index.js (Using)
+var sw = require('./stringywingy');
+console.log(sw.isAnagram('Elvis', 'Lives')); //=> true
+console.log(sw.isPalindrome('Yo, banana boy!')); //=> true
+</code></pre>
+        </section>
+
+
+        <section data-background="#0a3c59">
+<pre ><code data-trim class="javascript">
+// Using native APIs
+var path = require('path'); // note: not a relative path
+
+// resolve path from several links
+var folder = path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
+
+console.log(folder); //=> '/foo/bar/baz/asdf'
+</code></pre>
+        </section>
+
+        <section data-background="#0a3c59">
+          <h1>Oppgaver</h1>
+        </section>
+
+        <section data-background="#297f79">
+          <h1>Eksterne moduler: NPM</h1>
+        </section>
+
+        <section data-background="#0a3c59">
+<pre><code data-trim class="shell">
+npm install stringywingy
+</code></pre>
+<pre><code data-trim class="javascript">
+// Same as before, but note the path
+// no relative path, will look into `./node_modules/`
+var sw = require('stringywingy');
+
+console.log(sw.isAnagram('Clint Eastwood', 'Old west action')); //=> true
+console.log(sw.isPalindrome('Tacocat')); //=> true
+</code></pre>
+        </section>
+
+
+        <section data-background="./img/npm-screenshot.png">
+        </section>
+
+        <section data-background="./img/modulescount.png" data-background-size="80%" data-background-repeat="no-repeat"></>
+          <aside class="notes">
+            <p>
+              Data fra http://www.modulecounts.com/
+            </p>
+            <p>
+              Maven Central (Java) Avg growth: 120/day
+            </p>
+            <p>
+              NPM Avg growth: 194/day
+            </p>
+          </aside>
+        </section>
+
+        <section data-background="#0a3c59">
+<pre ><code data-trim class="shell">
+npm init
+</code></pre>
+<pre ><code data-trim class="json">
+{
+  "name": "foo",
+  "description": "A packaged foo fooer for fooing foos",
+  "author": "Bar, Foo Bar &lt;foobar@example.com&gt;",
+  "dependencies": {
+    "someDependency": "0.1.0"
+  }
+}</code></pre>
+<pre ><code data-trim class="shell">
+package.json
+</code></pre>
+
+        </section>
+
+        <section data-background="#0a3c59">
+<pre ><code data-trim class="javascript">
+npm install --save stringywingy
+</code></pre>
+<pre ><code data-trim class="json">
+{
+  "name": "foo",
+  "description": "A packaged foo fooer for fooing foos",
+  "author": "Bar, Foo Bar &lt;foobar@example.com&gt;",
+  "dependencies": {
+    "someDependency": "0.1.0",
+    "stringywingy": "1.0.0"
+  }
+}</code></pre>
+        </section>
+
+        <section data-background="#0a3c59">
+<pre ><code data-trim class="javascript">
+npm install --save-dev mocha
+</code></pre>
+<pre ><code data-trim class="json">
+{
+  "name": "foo",
+  "description": "A packaged foo fooer for fooing foos",
+  "author": "Bar, Foo Bar &lt;foobar@example.com&gt;",
+  "dependencies": {
+    "someDependency": "0.1.0",
+    "stringywingy": "1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "1.21.4"
+  }
+}</code></pre>
+        </section>
+
+        <section data-background="#0a3c59">
+<pre ><code data-trim class="markdown">
+# Semantic Versioning Summary
+Given a version number MAJOR.MINOR.PATCH increment the:
+* MAJOR version on incompatible API changes
+* MINOR version on backwards-compatible functionality
+* PATCH version on backwards-compatible bug fixes
+
+Additional labels for pre-release and build metadata are available as
+extensions to the MAJOR.MINOR.PATCH format.
+</code></pre>
+        </section>
+
+
+        <section data-background="./img/module_for_that.jpg"></section>
+
+        <section data-background="./img/nyancat_telnet.png"></section>
+
+        <section data-background="./img/nyancat_telnet_running.png"></section>
+
+        <section data-background="#0a3c59">
+          <h1>Oppgaver</h1>
+        </section>
+
 
         <section  data-background="#a3354c">
-<pre><code data-trim class="javascript">
-// get standard libraries
-var fs = require('fs');
-var http = require('http');
+          <h1>Kontrollflyt</h1>
+        </section>
 
-// create HTTP server on port 3000
-http.createServer(function (req, res) {
-  fs.createReadStream('macgyver_intro.mp3').pipe(res);
-}).listen(3000);
+        <section data-background="./img/eventloop.png"></section>
+
+        <section data-background="#0a3c59">
+<pre ><code data-trim class="js">
+var fs = require('fs'); // file system
+
+// Blocking
+var file = fs.readFileSync('somefile.dat');
+console.log('Sync:', file);
+
+// Async
+var aFile = fs.readFile('somefile.dat', function (err, data) {
+  console.log('Async:', data);
+});
+console.log('Will likely print before file');
 </code></pre>
 
-          <aside class="notes">
-            <p>
-              Her ser vi et eksempel på hvordan vi kan opprette en HTTP tjener som
-              streamer en fil til klienten.
-            </p>
-            <p>
-              Vi ser at vi kan gjøre ting på et litt lavere nivå om vi ønsker det.
-              Det finnes også API-endepunkt for rene TCP-kall.
-            </p>
-          </aside>
-        </section>
-
-        <section data-background="#297f79">
-          <h1>Massivt økosystem</h1>
-          <aside class="notes">
-            <p>Node har et massivt økosystem og Open Source aktivitet, som for mange er det største guleroten.</p>
-            <p>Man har NPM (node packaged modules eller nice people matters som de ofte kaller seg) som er pakkesystemet som blir brukt I node, men som man også kan/burde bruke for frontend.</p>
-          </aside>
-        </section>
-
-        <section data-background="#297f79">
-          <h1>Modulæritet i fokus</h1>
-          <aside class="notes">
-            <p>Har et utrolig voksende community hvor modulæritet og kode-deling er i fokus.</p>
-            <p>
-              Det finnes pakker for å gjøre det meste, og dette er ikke begrenset til tooling,
-              eller webutvikling, men det er også kode for roboter, kamera-integrasjon,
-              moduler for Neurale Nett, maskinlæring og naturlig språkprosessering.
-            </p>
-            <p>
-              Men det og også veldig mange pakker for asset håndtering (altså filer til nettleser og frontend) som kompilering av LESS, SASS, CoffeeScript eller lignende.
-            </p>
-          </aside>
-
-        </section>
-
-        <section data-background="#297f79">
-          <h1>Over <span class="highlight">90 000</span> moduler, og <br/><span class="highlight">7 000 000</span> nedlastninger om dagen</h1>
-          <aside class="notes">
-            <p>Har nå over <code>90 000</code> pakker delt.</p>
-            <p>Med over <code>7 000 000</code> nedlastninger om dagen.</p>
-          </aside>
-        </section>
-
-        <section data-background="#297f79">
-          <h1>Små gjenbrukbare pakker</h1>
-          <aside class="notes">
-            <p>«Felles filosofi» for Node.js brukere er å lage små delte pakker som kan gjenbrukes.</p>
-            <p>Fordelen er at alle pakker i utgangspunktet er lokale til prosjektet. Det betyr at
-              to prosjekter kan være avhengig av to forskjellige versjoner av et bibliotek.</p>
-            <p>Dette er i motsetning til f.eks PIP/easy_install i Python.</p>
-          </aside>
-        </section>
-
-        <section data-background="#297f79">
-          <h1>Eksempel: Google etter «notification center node»</h1>
-          <aside class="notes">
-            <p>Søk på f.eks google etter <code>node mac notification center</code> gir
-            en pakke som heter <code>node-notifier</code>.</p>
-            <p>Et kjapt blikk på dokumentasjonen ser vi hvordan vi kan bruke det.</p>
-          </aside>
-        </section>
-
-        <section  data-background="#297f79">
-<pre><code data-trim class="bash">
-$ npm install --save node-notifier
+<pre class="fragment"><code data-trim class="js">
+Sync: &lt;contents&gt;
+Will likely print before file
+Async: &lt;contents&gt;
 </code></pre>
-<pre class="fragment"><code data-trim class="javascript">
-// File: test.js
-var Notification = require('node-notifier');
-
-new Notification().notify({
-  message: 'Dud du dudu duu, dudu du!'
-}); // Sends a message to OS X
-</code></pre>
-<pre class="fragment"><code data-trim class="bash">
-$ node test.js
-</code></pre>
-          <aside class="notes">
-            <p>Dette vil sende en melding til Notification Center på Mac.</p>
-            <p>Hadde også fungert på Linux og på Windows med Growl.</p>
-          </aside>
-        </section>
-
-        <section data-background="#0a3c59" class="center">
-          <img src="img/notification.png" alt="Node Notifier Example" />
         </section>
 
         <section data-background="#0a3c59">
-          <h1>Node.js som tooling</h1>
-
-          <aside class="notes">
-            <p>Ettersom du har enkle asynkrone API-er for interagering med filsystem, tcp-connections, eller til og med bluetooth low energy, er det veldig enkelt å starte med Node.js som command line verktøy.</p>
-            <p>I tillegg finnes det veldig mange tooling-verktøy som en kan bygge oppå i NPM.</p>
-          </aside>
-        </section>
-
-        <section data-background="#0a3c59">
-          <h1>Fellestrekk med *NIX</h1>
-          <aside class="notes">
-            <p>Kan ha litt lik arkitektur som *NIX når det blir brukt som tooling.</p>
-            <p>Streaming av data uten å buffre alt i minnet, som gjør det veldig minne-effektivt og i mange tilfeller raskt.</p>
-          </aside>
-        </section>
-
-        <section data-background="#0a3c59">
-          <h1>Lett tilgang på CLI-argumenter</h1>
-<pre><code data-trim class="javascript">
-// test.js
-console.log(process.argv);
+<pre ><code data-trim class="js">
+first(x, function (err, y) {
+  // Some logic here
+  second(y, function (err, z) {
+    // Some logic here
+    third(z, function (err, a) {
+      // do something a
+    });
+  });
+});
 </code></pre>
-
-<pre class="fragment"><code data-trim class="bash">
-➜  node test.js foo bar
-[ 'node',
-  '/Users/angus-macgyver/test.js',
-  'foo',
-  'bar' ]
-</code></pre>
-          <aside class="notes">
-            <p>I node har vi, på lik linje som mange andre språk, veldig enkel tilgang på command line argumenter som blir sendt med.</p>
-            <p>Her ser vi at vi har en global variabel process som inneholder argumentene.</p>
-          </aside>
-
         </section>
 
         <section data-background="#0a3c59">
-          <h1>
-            <span class="fragment highlight-current-blue">Enkelt API</span>,
-            <span class="fragment highlight-current-blue">enkelt (morsomt) språk</span>,
-            <span class="fragment highlight-current-blue">mange eksisterende moduler</span>
-          </h1>
-
-          <aside class="notes">
-            <p>For å oppsummere litt om Node.js: Enkelt API, enkelt språk, mange eksisterende moduler.</p>
-            <p>Gjør det raskt og morsomt å lage små verktøy i.</p>
-          </aside>
-
-        </section>
-
-        <section data-background="#a3354c">
-          <h1>Ikke alt trenger å være nyttig!</h1>
-
-          <aside class="notes">
-            <p>Gjør det raskt og morsomt å lage små verktøy i.</p>
-            <p>
-              Ikke alt trenger å være veldig nytte eller brukbart for mange ting,
-              så lenge man har det moro og det er gøy å programmere.
-            </p>
-            <p>
-              Kanskje det til og med det kommer noe nyttig fra prosjektet på et senere tidspunkt. Man lærer seg byggesteiner og tankemåter som man kan benytte i mer seriøse prosjekter i fremtiden.
-            </p>
-          </aside>
-        </section>
-
-        <section data-background="img/macgyver.gif">
-          <aside class="notes">
-            <p>Ganske sikker på at MacGyver gjorde mye meningsløse eksperimenter for å finne ut av mye det han gjorde for når han var i Pheonix Foundation.</p>
-          </aside>
+<pre ><code data-trim class="js">
+first(x, doOnFirst);
+function doOnFirst (y) {
+  // Some logic here.
+  second(y, doOnSecond);
+}
+function doOnSecond (z) {
+  // Some logic here.
+  third(z, final);
+}
+function final (a) {
+  // do something with a
+}
+</code></pre>
         </section>
 
 
-        <section data-background="img/potato.jpg">
-          <aside class="notes">
-            <p>F.eks for de som husker det, viste han en gang denne potet-klokken som han lagde. Ikke anvendbar - men inspirerte nok til noe mer som bygger på samme konsepter.</p>
-          </aside>
+        <section data-background="#0a3c59">
+<pre><code data-trim class="js">
+// Using external library (async.js)
+async.waterfall([
+  function (cb) {
+    // some logic
+    first(x, cb);
+  }, function (y, cb) {
+      // some logic
+      second(y, cb);
+    }, function (z, cb) {
+      // some logic
+      third(z, cb);
+}], function (error, a) { /* do something with a */ });
+</code></pre>
         </section>
 
-        <section>
-          <h1>Eksempler!</h1>
+<section data-background="#0a3c59">
+<pre><code data-trim class="js">
+// Using external library (Promise)
+firstPromise
+  .then(function (y) {
+    // Some Logic
+    return generateSecondPromise(y);
+  })
+  .then(function (z) {
+    // Some Logic
+    return generateThirdPromise(z);
+  })
+  .then(function (a) {
+    // Do something with a
+  });
+</code></pre>
+</section>
+
+        <section data-background="#0a3c59">
+          <h1>Workshops!</h1>
         </section>
 
-        <section data-background="img/superhighfive.gif">
-        </section>
 
-        <section data-background="img/waterski.gif">
+        <section data-background="#0a3c59">
+          <h1>Installer</h1>
+<pre><code data-trim class="shell">
+npm install -g learnyounode
+learnyounode
+</code></pre>
+<pre><code data-trim class="shell">
+# Mer tid?
+npm install -g async-you
+async-you
+</code></pre>
         </section>
 
       </div>
