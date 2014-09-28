@@ -95,14 +95,18 @@
         <section data-background="#0a3c59">
 <pre><code data-trim class="javascript">
 console.log(isAnagram('Elvis', 'Lives'));
-//=> true
-
 function sortedString (str) {
   return str.toLowerCase().split('').sort().join('');
 }
 function isAnagram (a, b) {
   return sortedString(a) === sortedString(b);
 }
+</code></pre>
+<pre class="fragment"><code data-trim class="bash">
+$ node file.js
+</code></pre>
+<pre class="fragment"><code data-trim class="bash">
+true
 </code></pre>
         </section>
 
@@ -182,21 +186,6 @@ console.log(folder); //=> '/foo/bar/baz/asdf'
           <h1>Eksterne moduler: NPM</h1>
         </section>
 
-        <section data-background="#0a3c59">
-<pre><code data-trim class="shell">
-npm install stringywingy
-</code></pre>
-<pre><code data-trim class="javascript">
-// Same as before, but note the path
-// no relative path, will look into `./node_modules/`
-var sw = require('stringywingy');
-
-console.log(sw.isAnagram('Clint Eastwood', 'Old west action')); //=> true
-console.log(sw.isPalindrome('Tacocat')); //=> true
-</code></pre>
-        </section>
-
-
         <section data-background="./img/npm-screenshot.png">
         </section>
 
@@ -213,6 +202,22 @@ console.log(sw.isPalindrome('Tacocat')); //=> true
             </p>
           </aside>
         </section>
+
+
+        <section data-background="#0a3c59">
+<pre><code data-trim class="shell">
+npm install stringywingy
+</code></pre>
+<pre><code data-trim class="javascript">
+// Same as before, but note the path
+// no relative path, will look into `./node_modules/`
+var sw = require('stringywingy');
+
+console.log(sw.isAnagram('Clint Eastwood', 'Old west action')); //=> true
+console.log(sw.isPalindrome('Tacocat')); //=> true
+</code></pre>
+        </section>
+
 
         <section data-background="#0a3c59">
 <pre ><code data-trim class="shell">
@@ -396,13 +401,13 @@ firstPromise
         <section data-background="#0a3c59">
           <h1>Installer</h1>
 <pre><code data-trim class="shell">
-npm install -g learnyounode
-learnyounode
+$ npm install -g learnyounode
+$ learnyounode
 </code></pre>
 <pre><code data-trim class="shell">
 # Mer tid?
-npm install -g async-you
-async-you
+$ npm install -g async-you
+$ async-you
 </code></pre>
         </section>
 
