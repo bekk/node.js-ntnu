@@ -1,9 +1,10 @@
 /*
 # Exercise
 
-  It just so happens, that there are modules for doing
-  the string operations before on NPM. Try to locate
-  the modules by searching on https://www.npmjs.org/
+  It just so happens, that there already exists modules
+  for doing the string operations from part 1 on NPM.
+  Try to locate the modules by searching on https://www.npmjs.org/
+
   The names are:
     - stringywingy
     - underscore.string
