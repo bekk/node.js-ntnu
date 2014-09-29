@@ -42,21 +42,87 @@
           <h2>– A New Hope</h2>
         </section>
 
-        <section data-background="./img/nodejs.png"></section>
+        <section data-background="./img/ryan_dahl.png">
+          <aside class="notes">
+            <p>
+              Det hele startet tilbake i 2009, når denne karen, Ryan Dahl (en ingeniør
+              hos Joyent), irriterte
+              seg over at en progressbar på Flicker gjorde regelmessige AJAX-requests
+              opp mot serveren for å sjekke hvor langt den hadde kommet. Han tenkte
+              det måtte være en enklere måte å gjøre det på.
+            </p>
+            <p>
+              Etter en del utforsking og en konklusjon om at Ruby var et alt for
+              tregt språk, og at ingen ville bruke C, eller at heller ikke
+              python, lua eller Haskell gjorde biffen, fikk han en åpenbaring
+              om Javascript.
+            </p>
+          </aside>
+        </section>
 
-        <section data-background="./img/ryan_dahl.png"></section>
+        <section data-background="./img/Chrome-V81.jpg">
+          <aside class="notes">
+            <p>
+              Noen måneder tidliger (september 2008), hadde dette blitt open sourca.
+              En javascript engine som kjørte i Chrome. V8 kompillerer ting
+              (just in time) ned til maskinkode fremfor å kompillere det ned før
+              noe blir kjørt. Slik sett kan det optimaliserers mens det faktisk kjøres
+              og være kjapp.
+            </p>
+            <p>
+              Men en JavaScript Engine er ikke alt en trenger for å kjøre et program.
+              Det kreves også en Runtime. Tidligere var det slik at nettleserne stod
+              for runtime, og f.eks stod for å ha en kø av kode som JS motoren (V8),
+              skulle kjøre. Runtimen har også API-er for alt fra streng-operasjoner
+              til radix-transformasjoner.
+            </p>
+          </aside>
 
-        <section data-background="./img/Chrome-V81.jpg"></section>
+        </section>
 
-        <section data-background="./img/cpp.png"></section>
+        <section data-background="./img/cpp.png">
+          <aside class="notes">
+            <p>
+              Ettersom Ryan Dahl skulle lage en webserver, kunne han ikke bruke
+              Nettleseren som en runtime, men poenget var å lage en egen; dette
+              er Node.js - en runtime som bruker V8 som engine.
+            </p>
+            <p>
+              Ryan Dahl skrev mye av API-et for Runtimen i C++ og en
+              ganske stor andeli ren Javascript.
+              Resultatet av Google V8 + C++ + Javascript er Node.js.
+            </p>
+          </aside>
+        </section>
 
-        <section data-background="./img/nodejs.png"></section>
+        <section data-background="./img/nodejs.png">
+          <aside class="notes">
+            <p>
+              Node.js, lansert først i 2009 på JSConf EU, en årlig
+              JS-konferanse i Berlin.
+            </p>
+            <p>
+              Etter dette har det blitt ganske populært og f.eks i 2011 samarbeidet
+              Microsoft med Joyent (firmaet Ryan Dahl jobbet for), for å få Windows
+              støtte til Node.js. Så selv om Node.js, når først lansert, kun
+              var for Linux, er det nå ansett som kryssplattform og fungerer godt
+              i de fleste miljøer.
+            </p>
+          </aside>
+        </section>
 
         <section data-background="#0a3c59">
           <h1>Hva oppnår vi?</h1>
           <h2 class="fragment">JavaScript som serverside språk!</h2>
 
           <aside class="notes">
+            <p>
+              Hva oppnår vi med Node.js?
+            </p>
+            <p>
+              Vi får Javascript som et serversidespråk og alle fordeler og ulemper
+              dette fører med seg.
+            </p>
           </aside>
         </section>
 
@@ -66,11 +132,14 @@
           <h1>Ikke-blokkerende (asynkront) miljø, uten trådhåndtering</h1>
 
           <aside class="notes">
-            <p>Som med Javascript i nettleseren, får vi et ikke-blokkerende (asynkront) miljø, uten trådhåndtering.</p>
+            <p>
+              Det betyr at vi får et ikke-blokkerende og asynkront miljø uten noe
+              behov for trådhåndtering og da ingen concurrency issues som en
+              ofte kan ha.
+            </p>
             <p>I Javascript har man en event loop med flere steg som håndterer forskjellig typer kode.</p>
-            <p>Du kan utsette enkelte operasjoner og ta de igjen senere i en eventloop (når callstacken er tom).</p>
-            <p>I mellomtiden da kan man gjøre andre operasjoner. Dette er det som er asynkronitet.</p>
-            <p>Eksempelvis, kan man starte å lese fra en fil, men ikke håndtere dette før innholdet er klart.</p>
+            <p>Vi vil se mer på denne EventLoopen senere i dag.</p>
+            <p>Men slik det kan funke er eksempelvis, man kan starte å lese fra en fil, men ikke håndtere dette før innholdet er klart.</p>
             <p>Denne asynkrone modellen gjør at Node.js egner seg godt til input og output operasjoner.</p>
           </aside>
         </section>
@@ -89,6 +158,10 @@
           <aside class="notes">
             <p>Ettersom det er Javascript kan man bruke språkerfaringer man har fra nettleseren. I enkelte tilfeller kan man også dele kode mellom tjener og klient.</p>
             <p>Eksempler på det man kan dele er domenelogikk, validering, modeller eller ligende.</p>
+            <p>
+              Vi vil se på et eksempel med JavaScript for Node.js nå, men det kunne like
+              gjerne vært en del av en kode i Nettleseren.
+            </p>
           </aside>
         </section>
 
@@ -111,6 +184,23 @@ true
         </section>
 
         <section data-background="#0a3c59">
+          <h1>Dele opp kode</h1>
+
+          <aside class="notes">
+            <p>
+              Et viktig aspekt med Node.js er at man må kunne dele opp koden
+              i flere moduler, og isolere privat kode fra public kode for å
+              designe API-surfaces.
+            </p>
+            <p>
+              Node.js bruker en variasjon av noe som heter CommonJS pattern
+              for å hente inn avhengigheter til en fil, eller eksportere
+              hvilke funksjoner som er tilgjengelig i en modul.
+            </p>
+          </aside>
+        </section>
+
+        <section data-background="#0a3c59">
 <pre><code data-trim class="javascript">
 // Using:
 console.log(isAnagram('Elvis', 'Lives'));
@@ -125,6 +215,14 @@ function isAnagram (a, b) {
   return sortedString(a) === sortedString(b);
 }
 </code></pre>
+          <aside class="notes">
+            <p>
+              Om vi følger eksemplet fra i sted, ser vi egentlig at vi har
+              en privat funksjon som ikke er en del av APIet vårt, og i tillegg
+              ønsker vi å splitte ut isAnagram slik at den kan gjenbrukes i flere
+              sammenhenger og kanskje til og med i nettleseren.
+            </p>
+          </aside>
         </section>
 
         <section data-background="#0a3c59">
@@ -146,6 +244,20 @@ function sortedString (str) {
   return str.toLowerCase().split('').sort().join('');
 }
 </code></pre>
+          <aside class="notes">
+            <p>
+              Vi ønsker i bunn og grunn å bruke det på denne måten. Hente inn
+              avhengigheten og bruke den. Slik kan vi hente den inn i forskjellige
+              filer og i forskjellige kontekster.
+            </p>
+            <p class="fragment">
+              For å lage en slik modul kan vi lage en egen fil som bruker en
+              spesial-variabel kalt "module" for å eksponere en funksjon. Man
+              kan tenke på "module.exports" som et objekt som blir returnert
+              når noen requirer filen. Ettersom sortedString her ikke er
+              eksportert, vil den ikke være tilgjengelig utenfor modulen seg selv.
+            </p>
+          </aside>
         </section>
 
         <section data-background="#0a3c59">
@@ -163,6 +275,14 @@ var sw = require('./stringywingy');
 console.log(sw.isAnagram('Elvis', 'Lives')); //=> true
 console.log(sw.isPalindrome('Yo, banana boy!')); //=> true
 </code></pre>
+          <aside class="notes">
+            <p>
+              Vi kan også eksponere flere funksjoner av samme modul.
+            </p>
+            <p>
+              Da vil vi kunne bruke det på denne måten.
+            </p>
+          </aside>
         </section>
 
 
@@ -176,10 +296,41 @@ var folder = path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
 
 console.log(folder); //=> '/foo/bar/baz/asdf'
 </code></pre>
+          <aside class="notes">
+            <p>
+              Innebygde (native) moduler fungerer på akkurat samme måten. De
+              eksponerer et sett med funksjoner som man kan bruke.
+            </p>
+            <p>
+              Noen av de innebygde modulene er enkle wrappere for C++ moduler
+              (f.eks de som kommuniserer direkte med OS-et),
+              men det er rene Javascript lag på toppen som eksponerer funksjoner på
+              samme måte som den stringywingy modulen vi så tidligere.
+            </p>
+          </aside>
         </section>
 
         <section data-background="#0a3c59">
           <h1>Oppgaver</h1>
+<pre ><code data-trim>
+git clone https://github.com/bekk/node.js-ntnu
+</code></pre>
+<pre ><code data-trim>
+/del1/exercises/part1/
+</code></pre>
+          <aside class="notes">
+            <p>
+              Nå skal vi lage vår egen stringywingy modul.
+            </p>
+            <p>
+              Oppgavene finnes i gitrepoet sett her og i mappen
+              /del1/exercises/part1/.
+            </p>
+            <p>
+              Det finnes også løsning i samme mappe dersom dere
+              står helt fast.
+            </p>
+          </aside>
         </section>
 
         <section data-background="#297f79">
