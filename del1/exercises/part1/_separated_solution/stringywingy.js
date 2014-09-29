@@ -1,4 +1,10 @@
 
+// Solution, separate module
+
+
+// We want to use reverse and chars locally in this file as well
+// as exporting them.
+
 var chars = module.exports.chars = function (str) {
   if (!str) return [];
   return String(str).split('');
@@ -8,7 +14,6 @@ var reverse = module.exports.reverse = function (str) {
   return chars(str).reverse().join('');
 };
 
-// Implementations go here
 module.exports.isAnagram = function (first, second) {
   return sortedString(first) === sortedString(second);
 };
@@ -20,6 +25,7 @@ module.exports.isPalindrome = function (str) {
 module.exports.swapCase = function (str) {
   if (!str) return '';
 
+  // Replace all non-whitespace with their case counterpart
   return String(str).replace(/\S/g, function(c){
     return c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase();
   });
@@ -31,7 +37,7 @@ module.exports.count = function (str, char) {
 };
 
 
-// Private functions
+// Private functions. Not exported.
 
 function sortedString (str) {
   return clean(str).split('').sort().join('');

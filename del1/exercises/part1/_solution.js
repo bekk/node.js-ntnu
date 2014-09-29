@@ -68,6 +68,7 @@ function chars (str) {
 function swapCase (str) {
   if (!str) return '';
 
+  // Replace all non-whitespace with their case counterpart
   return String(str).replace(/\S/g, function(c){
     return c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase();
   });
