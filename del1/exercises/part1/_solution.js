@@ -14,38 +14,41 @@
     isAnagram, isPalindrome, chars, swapCase, count, reverse
 */
 
+// Used to check if correct values
+var shouldBe = require('../shouldBe');
 
 // Print if is anagram (filter non-alpha-numerics, ignore case)
-console.log('Should be true:', isAnagram('Elvis', 'Lives')); //=> true
-console.log('Should be true:', isAnagram('Clint Eastwood', 'Old west action')); //=> true
-console.log('Should be false:', isAnagram('Ben Affleck', 'Batman')); //=> false
+shouldBe(true, isAnagram('Elvis', 'Lives')); //=> true
+shouldBe(true, isAnagram('Clint Eastwood', 'Old west action')); //=> true
+shouldBe(false, isAnagram('Ben Affleck', 'Batman')); //=> false
 
 
 // Print if is palindrome (filter non-alpha-numerics, ignore case)
-console.log('Should be true:', isPalindrome('Tacocat')); //=> true
-console.log('Should be true:', isPalindrome('Yo, banana boy!')); //=> true
-console.log('Should be true:', isPalindrome('Agnes i senga')); //=> true
-console.log('Should be false:', isPalindrome('Woppaa')); //=> false
+shouldBe(true, isPalindrome('Tacocat')); //=> true
+shouldBe(true, isPalindrome('Yo, banana boy!')); //=> true
+shouldBe(true, isPalindrome('Agnes i senga')); //=> true
+shouldBe(false, isPalindrome('Woppaa')); //=> false
 
 
 // Print splitted characters
-console.log('Should be ["a", "b", "c"]:', chars('abc'));
-console.log('Should be ["Y","o",","," ","b","a","n","a","n","a","b","o","y","!"]:', chars('Yo, banana boy!'));
+shouldBe(['a', 'b', 'c'], chars('abc'));
+shouldBe(['Y','o',',',' ','b','a','n','a','n','a',' ','b','o','y','!'], chars('Yo, banana boy!'));
 
 
 // Should swap case for characters
-console.log('Should be "Hello":', swapCase('hELLO'));
-console.log('Should be wOPPA', swapCase('Woppa'));
+shouldBe('Hello', swapCase('hELLO'));
+shouldBe('wOPPA', swapCase('Woppa'));
 
 
 // Should count number of characters (case sensitive)
-console.log('Should be "2"', count('Tacocat', 'c'));
-console.log('Should be "1"', count('Tacocat', 't'));
+shouldBe('2', count('Tacocat', 'c'));
+shouldBe('1', count('Tacocat', 't'));
 
 
 // Should print reversed strings
-console.log('Should be "Tacocat"', reverse('tacocaT'));
-console.log('Should be "Yo, banana boy!"', reverse('!yob ananab ,oY'));
+shouldBe('Tacocat', reverse('tacocaT'));
+shouldBe('Yo, banana boy!', reverse('!yob ananab ,oY'));
+
 
 
 // Implementations go here
