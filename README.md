@@ -32,6 +32,7 @@
   1. [LearnYouNode](https://github.com/rvagg/learnyounode)
   2. [Async You](https://github.com/bulkan/async-you) (om mye tid)
 
+
 22. okt - Kim
 ================
 
