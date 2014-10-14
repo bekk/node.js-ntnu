@@ -47,18 +47,31 @@ Lær mer: Stream-adventures
 5. nov - Stian
 ==============
 
-npm som kilde til frontend-kode. Browserify.
-
-web-chat?
-
-webgl?
-
-tema som folk kan noe om og kan løse oppgaver til
-
-koble til større kontekst --> frontend
-
-Abstrahere DOM? require('bekk-chat')? setName(), setTitle(), ... Gjør det idiotsikkert
-
-Sette opp Heroku, koble på slik at alle kan prate sammen
-
-Lær mer: Browserify-adventurs
+1. Teori
+  - Hvorfor moduler i frontend?
+  - node-require
+    - hva er egentlig `module.export` og `require`?
+    - lookup algoritme
+  - Browserifys forhold til `require` og `module`
+  - `browserify`-kommandoen
+  - Demo og oppgave
+2. Praktisk
+  - Debug-mode og sourcemaps
+  - Watchify
+    - Beefy
+  - Kode-deling
+    - Builtins
+    - Browser-field
+  - Transforms
+  - Verdt å vite om options
+    - `no-parse`
+    - `exclude` og `external`
+    - `standalone`
+  - [Browserify Handbook]()
+  - Demo og oppgave
+3. Avansert eksempel (motivasjon)
+4. Viderekommende
+  - browserify-shim og Browser field
+  - glslify og WebGL
+5. Workshops
+  - [Browserify Adventure]()
