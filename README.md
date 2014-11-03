@@ -47,31 +47,34 @@ Lær mer: Stream-adventures
 5. nov - Stian
 ==============
 
-1. Teori
-  - Hvorfor moduler i frontend?
-  - node-require
-    - hva er egentlig `module.export` og `require`?
-    - lookup algoritme
-  - Browserifys forhold til `require` og `module`
-  - `browserify`-kommandoen
-  - Demo og oppgave
-2. Praktisk
-  - Debug-mode og sourcemaps
-  - Watchify
-    - Beefy
-  - Kode-deling
-    - Builtins
-    - Browser-field
-  - Transforms
-  - Verdt å vite om options
-    - `no-parse`
-    - `exclude` og `external`
-    - `standalone`
-  - [Browserify Handbook]()
-  - Demo og oppgave
-3. Avansert eksempel (motivasjon)
-4. Viderekommende
-  - browserify-shim og Browser field
-  - glslify og WebGL
-5. Workshops
-  - [Browserify Adventure]()
+1. Node og npm for frontend
+  - verktøyplatform
+    - Litt om hvilke verktøy som brukes
+  - js tools for js developers
+    - Litt om motivasjonen for node som verktøyplatform
+    - Hvorfor node fremfor alternativene (ruby og python)
+  - Forskjellen mellom node og browser
+    - DOM APIs
+    - "missing window"
+  - tasks med npm run
+    - Hvordan verktøy brukes (CLI og som js-api)
+    - Hvordan npm run slår opp modules
+    - Format på npm run
+2. JS Modules og Browserify
+  - Hvorfor modules?
+  - Hvorfor browserify?
+  - Hva er egentlig require og module.exports?
+    - Litt om lookup-algoritmen
+    - require og module.exports er bare globals
+  - Hva gjør browserify?
+  - Hvordan bruker vi browserify
+    - CLI
+    - JS API
+  - Browserify-extended
+    - Transforms
+    - Watchify
+    - Debug-mode og sourcemaps
+3. Avansert Browserify
+  - Browserify-shim og Browser-field
+  - Built-ins
+  - Browserify handbook
