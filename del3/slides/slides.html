@@ -106,6 +106,13 @@
 
 </style>
 
+<section class="emphasis" data-background="#fd5157">
+  <h1>Før vi starter:</h1>
+  <h2><code>$ git clone git@github.com:/bekkopen/node.js-ntnu</code></h2>
+  <h2><code>$ cd node.js-ntnu/del3</code></h2>
+  <h2><code>$ npm install</code></h2>
+</section>
+
 <section class="center">
   <h1>NODE.JS DEL III:</h1>
   <h1>NODE.JS FOR FRONTEND</h1>
@@ -255,15 +262,7 @@ $ npm run less
 
 <section>
   <h1>Oppgave 1</h1>
-  <p>Dere skal utføre noen vanlige frontend-oppgaver vha verktøy dere finner på <code>npm</code>.</p>
-  <ul>
-    <li>Konkatener og minifiser filene <code>1.js</code> og <code>2.js</code> til <code>app.js</code> vha <a href="npm.im/uglify-js">uglifyjs</a></li>
-    <li>Kompiler filen <code>styles.less</code> til <code>styles.css</code> vha <a href="http://npm.im/less">less</a></li>
-    <li>Kjør testene i <code>test.js</code> vha <a href="npm.im/mocha">mocha</a></li>
-    <li>Konfigurer alle oppgavene til å bli kjørt med <a href="https://www.npmjs.org/doc/misc/npm-scripts.html"><code>npm-scripts</code></a></li>
-  </ul>
-  <br />
-  <p>Oppgavemappa ligger under <span class="uthev">del3/oppgave1</span></p>
+  <p>Dere finner oppgaveteksten i README.md i <span class="uthev">del3/oppgave1</span></p>
 </section>
 
 <section class="center">
@@ -323,10 +322,54 @@ $ npm run less
   </code></pre>
 </section>
 
+<section>
+  <h1>Hvorfor Browserify?</h1>
+  <p class="fragment">Browserify implementerer require-funksjonen og module.exports som Node.js gjør.</p>
+  <br />
+  <p class="fragment">Det gjør at vi kan benytte samme module-syntax utenfor Node.js.</p>
+</section>
+
+<section>
+  <h1>Hva gjør Browserify?</h1>
+  <p class="fragment">Browserify leser dependency-grafen til en js-fil og syr alt sammen til en bundle.</p>
+  <br />
+  <p class="fragment">I tillegg eksponerer Browserify funksjonalitet for å utføre transforms på hver fil som blir inkludert i bundelen.</p>
+</section>
+
+<section class="center">
+  <h1>Men hva med forskjellene mellom Node.js og Browseren?</h1>
+</section>
+
+<section>
+  <h1>Hvordan bruke Browserify?</h1>
+  <div class="fragment">
+    <p>Mest grunnleggende:</p>
+    <pre><code class="bash">$ browserify app.js -o bundle.js</code></pre>
+  </div>
+  <div class="fragment">
+    <p>Avansert:</p>
+    <pre><code class="javascript">
+var browserify = require('browserify');
+var fs = require('fs');
+
+var b = browserify();
+var bundleFile = fs.createWriteStream('./bundle.js');
+
+b.add('./app.js');
+b.bundle().pipe(bundleFile);
+    </code></pre>
+  </div>
+</section>
+
+<section>
+  <h1>Oppgave 2</h1>
+  <p>Dere finner oppgaveteksten i README.md i <span class="uthev">del3/oppgave2</span></p>
+</section>
+
 <section class="center">
   <h1>TAKK FOR MEG</h1>
 </section>
 
-<section class="center emphasis" data-background="#fb544d">
+<section class="center emphasis" data-background="#fd5157">
   <h1>BRYGGHUS9 NESTE</h1>
 </section>

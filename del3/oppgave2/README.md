@@ -8,9 +8,9 @@
 
 ## 2A Hello World
 
-Start i "app.js", når du er ferdig med koden så kompilerer du filen med browserify.
+Start i "app.js", når du er ferdig med koden så kompilerer du filen med browserify ved å kjøre `npm run browserify`.
 
-Hvis du har gjort det riktig så vil du se "Hello World" printa i konsollet i browseren.
+Hvis du har gjort det riktig så vil du se "Hello World" printa i konsollet i browseren når du refresher.
 
 ## 2B
 
