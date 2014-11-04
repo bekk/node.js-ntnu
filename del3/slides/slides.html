@@ -45,7 +45,7 @@
   }
 
   .reveal p {
-    font-size: 150%;
+    font-size: 200%;
     text-align: left;
   }
   span.uthev {
@@ -264,6 +264,63 @@ $ npm run less
   </ul>
   <br />
   <p>Oppgavemappa ligger under <span class="uthev">del3/oppgave1</span></p>
+</section>
+
+<section class="center">
+  <h1>NODE.JS SOM KILDE TIL JAVASCRIPT</h1>
+</section>
+
+<section class="center">
+  <h1><span class="uthev">NPM</span> SOM KILDE TIL JAVASCRIPT</h1>
+</section>
+
+<section>
+  <h1><code>npm install</code></h1>
+  <p class="fragment">
+    Det ligger 100 000 modules på npm per i dag
+  </p>
+  <p class="fragment">
+    Det hadde vært utrolig kult å benytte seg av det.
+  </p>
+</section>
+
+<section class="center">
+  <h1>BROWSERIFY</h1>
+  <h1>MODULARITY FOR EVERYONE!</h1>
+</section>
+
+<section>
+  <h1>Hvorfor modules?</h1>
+  <p class="fragment">
+    Globale variabler og implsitte avhengigheter er en stor kilde til feil, det
+    er vanskelig å gjenbruke og det skalerer dårlig.
+  </p>
+</section>
+
+<section>
+  <h1>JavaScript modules</h1>
+  <p class="fragment">
+    JavaScript har ikke native modules (for øyeblikket).
+  </p>
+  <br />
+  <p class="fragment">
+    Derfor låner vi module-systemet til Node.js.
+  </p>
+</section>
+
+<section>
+  <h1>Node.js modules</h1>
+  <pre><code class="javascript">
+    var dep1 = require('dep1');
+    var dep2 = require('dep2');
+
+    function someFunction() {
+      dep1();
+      dep2();
+    }
+
+    module.exports = someFunction;
+  </code></pre>
 </section>
 
 <section class="center">

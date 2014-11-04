@@ -1,19 +1,18 @@
 # Oppgave 2
 
-Browserify introduksjon
+**Steg 1**: `npm install browserify -g`
 
-Tidsbruk: 15-20min
-Mål: Få en feel for browserify og basic funksjonalitet
+**Steg 2**: `npm start`
 
-## 2a
+**Steg 3**: gå til [localhost:8080](http://localhost:8080)
 
-Browserify "Hello World"
+## 2A Hello World
 
-- Lag en hello.js-fil som logger "Hello World"
-- Kompiler med browserify
-- Kjør i browser (npm start med prekonfigurert server)
+Start i "app.js", når du er ferdig med koden så kompilerer du filen med browserify.
 
-## 2b
+Hvis du har gjort det riktig så vil du se "Hello World" printa i konsollet i browseren.
+
+## 2B
 
 Browserify med npm-modules
 
@@ -21,7 +20,7 @@ Browserify med npm-modules
 - Kompiler med browserify
 - Kjør i browser
 
-## 2c
+## 2C
 
 Browserify med transforms
 
