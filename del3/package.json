@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "postinstall": "npm --prefix ./oppgave1 install ./oppgave1 && npm --prefix ./oppgave2 install ./oppgave2 && npm --prefix ./oppgave3 install ./oppgave3"
+  }
+}
