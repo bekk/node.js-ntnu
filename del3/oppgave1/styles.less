@@ -1,0 +1,36 @@
+.venn > div {
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  background: #fd5157;
+  float: left;
+  display: flex;
+  opacity: 0.5;
+
+  &:first-child {
+    margin-top: 50px;
+    margin-right: -150px;
+    & > div {
+      margin-left: 9%;
+    }
+  }
+
+  &:last-child {
+    margin-top: 50px;
+    margin-left: -150px;
+    & > div {
+      margin-right: 9%;
+    }
+  }
+
+  &:nth-child(2) {
+    height: 400px;
+    width: 400px;
+    font-size: 250%;
+  }
+
+  & > div {
+    margin: auto;
+    color: #1b1b1b;
+  }
+}
