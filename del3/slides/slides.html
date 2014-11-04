@@ -23,6 +23,10 @@
     color: #1b1b1b;
   }
 
+  h1, h2, h3, h4 {
+    text-transform: none !important;
+  }
+
   .dark {
     background: #1b1b1b;
   }
@@ -48,16 +52,204 @@
     color: #fd5157;
   }
 
+  .venn > div {
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    background: #fd5157;
+    float: left;
+    display: flex;
+    opacity: 0.5;
+  }
+
+  .venn > div:nth-child(2) {
+    height: 400px;
+    width: 400px;
+    font-size: 250%;
+  }
+
+  .venn > div > div {
+    margin: auto;
+    color: #1b1b1b;
+  }
+
+  .venn > div:first-child {
+    margin-top: 50px;
+    margin-right: -150px;
+  }
+
+  .venn > div:last-child {
+    margin-top: 50px;
+    margin-left: -150px;
+  }
+
+  .venn > div:first-child > div{
+    margin-left: 9%;
+  }
+
+  .venn > div:last-child > div {
+    margin-right: 9%;
+  }
+
+  pre code {
+    font-size: 200% !important;
+    line-height: 120% !important;
+    max-height: none !important;
+  }
+
+
 </style>
 
 <section class="center">
+  <h1>NODE.JS DEL III:</h1>
   <h1>NODE.JS FOR FRONTEND</h1>
   <p>Stian Veum Møllersen</p>
   <p>BEKK</p>
 </section>
 
+<section class="center">
+  <h1>NODE.JS SOM VERKTØYPLATFORM</h1>
+</section>
+
 <section>
-  <h1>Hvorfor modules?</h1>
+  <h1>Vanlige oppgaver</h1>
+  <p class="fragment">
+    Kompilere ting (less -> css, cs -> js)
+  </p>
+  <p class="fragment">
+    Konkatenere og minifisere
+  </p>
+  <p class="fragment">
+    Kjøre tester
+  </p>
+</section>
+
+<section class="center">
+  <h1>JavaScript tools for JavaScript developers</h1>
+</section>
+
+<section>
+  <h1>Hvorfor Node.js?</h1>
+  <p class="fragment">
+    Digert økosystem i <code>npm</code>
+  </p>
+  <p class="fragment">
+    Behagelig å jobbe med IO
+  </p>
+  <p class="fragment">
+    Det er en js-runtime
+  </p>
+</section>
+
+<section>
+  <h1>Node.js vs Browser</h1>
+  <div class="venn">
+    <div><div>Node API</div></div>
+    <div><div>JavaScript</div></div>
+    <div><div>DOM API</div></div>
+  </div>
+</section>
+
+<section>
+  <h1>Node.js vs Browser</h1>
+  <p>Eksempel:</p>
+  <pre><code class="javascript">
+var button = document.createElement('button');
+button.innerText = 'PRESS ME';
+document.body.appendChild(button);
+  </code></pre>
+  <a target="_blank" href="about:blank">Test</a>
+</section>
+
+<section>
+  <h1>Node.js vs Browser</h1>
+  <p>Eksempel:</p>
+  <pre><code class="javascript">
+var cubes = [1, 2, 3, 4, 5].map(function (e) {
+  return e*3;
+});
+console.log(cubes);
+  </code></pre>
+  <a target="_blank" href="about:blank">Test</a>
+</section>
+
+<section class="center">
+  <h1>Hvordan bruker vi verktøy med Node.js?</h1>
+</section>
+
+<section>
+  <h1>Kommandolinja</h1>
+  <pre class="fragment"><code class="bash">
+$ npm install -g less
+  </code></pre>
+  <pre class="fragment"><code class="bash">
+$ lessc styles.less styles.css
+  </code></pre>
+</section>
+
+<section>
+  <h1>JS API</h1>
+  <pre class="fragment"><code class="bash">
+$ npm install less
+  </code></pre>
+  <pre class="fragment"><code class="javascript">
+var less = require('less');
+var fs = require('fs');
+
+var file = fs.readFileSync('styles.less');
+
+less.render(file, function (err, css) {
+  if(err) return;
+
+  fs.writeFileSync('styles.css', css);
+});
+  </code></pre>
+  <pre class="fragment"><code class="bash">
+$ node script.js
+  </code></pre>
+</section>
+
+<section>
+  <h1><code>npm-scripts</code></h1>
+  <p class="fragment">
+    En del av package.json formatet
+  </p>
+  <p class="fragment">
+    Kjøres med <code>npm run</code>
+  </p>
+</section>
+
+<section>
+  <h1><code>npm-scripts</code></h1>
+  <pre class="fragment"><code class="bash">
+$ npm run [script-name]
+  </code></pre>
+  <p class="fragment">
+    Noen scripts er koblet sammen med andre npm-kommandoer. <code>npm start</code> og <code>npm test</code> er de to vanligste.
+  </p>
+</section>
+
+<section>
+  <h1><code>npm-scripts</code></h1>
+  <pre><code class="json">
+...
+"scripts": {
+  "less": "lessc styles.less styles.css"
+},
+...
+  </code></pre>
+  <pre class="fragment"><code class="bash">
+$ npm run less
+  </code></pre>
+</section>
+
+<section class="center">
+  <h2>Scripts definert på denne måten har tilgang på lokale pakker, så en slipper å installere ting med -g.</h2>
+</section>
+
+<section>
+  <h1>Oppgave 1</h1>
+  <p>TODO: Skriv inn oppgave 1 her</p>
 </section>
 
 <section class="center">
