@@ -1,10 +1,8 @@
 # Oppgave 2
 
-**Steg 1**: `npm install browserify -g`
+**Steg 1**: `npm start`
 
-**Steg 2**: `npm start`
-
-**Steg 3**: gå til [localhost:8080](http://localhost:8080)
+**Steg 2**: gå til [localhost:8080](http://localhost:8080)
 
 ## 2A Hello World
 
