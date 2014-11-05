@@ -1,0 +1,39 @@
+body {
+  padding: 5%;
+}
+
+input {
+  padding: 1%;
+  font-size: 200%;
+}
+
+button {
+  font-size: 200%;
+  padding: 1%;
+}
+
+#messages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+}
+
+.message {
+  padding: 0.5%;
+  margin: 1%;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.sender {
+  background: silver;
+  margin: -0.5%;
+  padding: 0 1%;
+}
+
+.messagetext {
+  margin-top: 1.5%;
+  font-size: 150%;
+  padding: 0 1%;
+}

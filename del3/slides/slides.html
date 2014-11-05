@@ -310,15 +310,28 @@ $ npm run less
 <section>
   <h1>Node.js modules</h1>
   <pre><code class="javascript">
-    var dep1 = require('dep1');
-    var dep2 = require('dep2');
+var npmDep1 = require('npmDep1');
+var localDep2 = require('./localDep2');
 
-    function someFunction() {
-      dep1();
-      dep2();
-    }
+module.exports = function someFunction() {
+  npmDep1();
+  localDep2();
+}
+  </code></pre>
+</section>
 
-    module.exports = someFunction;
+<section>
+  <h1>Node.js modules</h1>
+  <pre><code class="javascript">
+var npmDep1 = require('npmDep1');
+var localDep2 = require('./localDep2');
+
+module.exports.someFunction = function someFunction() {
+  npmDep1();
+  localDep2();
+};
+
+module.exports.someOtherFunction = localDep2;
   </code></pre>
 </section>
 
