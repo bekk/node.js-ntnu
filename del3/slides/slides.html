@@ -346,7 +346,7 @@ module.exports.someOtherFunction = localDep2;
   <h1>Hva gjør Browserify?</h1>
   <p class="fragment">Browserify leser dependency-grafen til en js-fil og syr alt sammen til en bundle.</p>
   <br />
-  <p class="fragment">I tillegg eksponerer Browserify funksjonalitet for å utføre transforms på hver fil som blir inkludert i bundelen.</p>
+  <p class="fragment">I tillegg eksponerer Browserify funksjonalitet for å utføre transformasjoner på hver fil som blir inkludert i en bundle.</p>
 </section>
 
 <section class="center">
@@ -377,6 +377,85 @@ b.bundle().pipe(bundleFile);
 <section>
   <h1>Oppgave 2</h1>
   <p>Dere finner oppgaveteksten i README.md i <span class="uthev">del3/oppgave2</span></p>
+</section>
+
+<section>
+  <h1>Automatisk task-running</h1>
+  <p>
+    Det er slitsomt å kjøre en kommando hver gang man vil se endringer
+  </p>
+  <br />
+  <p class="fragment">
+    Løsning: Bruke watchers
+  </p>
+</section>
+
+<section>
+  <h1>Watchers</h1>
+  <p>
+    Observerer filer for endringer og gjør en handling hvis filen endrer seg.
+  </p>
+</section>
+
+<section>
+  <h1>Watchify</h1>
+  <p>
+    En watcher for Browserify.
+  </p>
+  <pre class="fragment"><code class="bash">$ watchify app.js -o bundle.js</code></pre>
+</section>
+
+<section>
+  <h1>Debugging</h1>
+  <p>Når man syr alt sammen til en stor fil blir det vanskelig å finne igjen koden det er feil i</p>
+  <br />
+  <p class="fragment">Løsning: Bruke sourcemaps</p>
+</section>
+
+<section>
+  <h1>Sourcemaps</h1>
+  <p>Sourcemaps er en måte å fortelle devtools hvilken fil en bestemt kodesnutt stammer fra.</p>
+  <br />
+  <div class="fragment">
+    <p>Vi kan aktivere sourcemaps i Browserify med <code>-d</code> flagget</p>
+    <pre><code class="bash">$ browserify app.js -o bundle.js -d</code></pre>
+  </div>
+</section>
+
+<section class="center">
+  <h1>Hva om jeg vil bruke kode som ikke er skrevet med nodes module format?</h1>
+</section>
+
+<section>
+  <h1>Browserify-Shim</h1>
+  <p>Gjør kode som ikke er skrevet på nodes module format browserifiable</p>
+  <p><a href="npm.im/browserify-shim">npm.im/browserify-shim</a></p>
+</section>
+
+<section class="center">
+  <h1>Mer info:</h1>
+  <h2><a href="https://github.com/substack/browserify-handbook">github/substack/browserify-handbook</a></h2>
+</section>
+
+<section>
+  <h1>Oppgave 3</h1>
+  <p>Dere finner oppgaveteksten i README.md i <span class="uthev">del3/oppgave3</span></p>
+</section>
+
+<section>
+  <h1>Oppsummering</h1>
+  <p class="fragment">Node.js er en fin platform for frontend-relaterte verktøy</p>
+  <br />
+  <p class="fragment">npm er en god kilde til gjenbrukbar frontend-kode</p>
+  <br />
+  <p class="fragment">Browserify lar oss benytte nodes module format i browseren</p>
+</section>
+
+<section>
+  <h1>Videre</h1>
+  <p class="fragment">JavaScript modules tar oss bare så langt.</p>
+  <br />
+  <p class="fragment">Økende kompleksitet krever mer abstraksjon.</p>
 </section>
 
 <section class="center">
